@@ -7,5 +7,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource(collectionResourceRel = "patient", path="patient" )
 public interface PatientRepository extends MongoRepository<Patient, String>{
-    public Patient findByPesel(String login);
+    public Patient findByPesel(String pesel);
 }

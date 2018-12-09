@@ -7,5 +7,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource(collectionResourceRel = "worker", path="worker" )
 public interface WorkerRepository extends MongoRepository<Worker, String>{
-    public Worker findByPesel(String login);
+    public Worker findByPesel(String pesel);
 }
