@@ -1,4 +1,4 @@
-package com.example.gtommee.rest_tutorial.config;
+package com.clinicmanagementsystem.cms;
 import com.clinicmanagementsystem.cms.services.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -20,7 +20,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests().anyRequest().authenticated()
+                .authorizeRequests()
+                .antMatchers("/appointment/**").permitAll()
+                .antMatchers("/doctor/**").permitAll()
+                .antMatchers("/patient/**").permitAll()
+                .antMatchers("/worker/**").permitAll()
+                .antMatchers("/user/**").permitAll()
+                .antMatchers("/register/**").authenticated()
+                .anyRequest().authenticated()
                 .and().httpBasic()
                 .and().sessionManagement().disable();
     }

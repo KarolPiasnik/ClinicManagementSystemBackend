@@ -111,10 +111,10 @@ public class User extends Auditable implements UserDetails {
         this.authorities = authorities;
     }
 
-    public User(String username, String password, List<SimpleGrantedAuthority> authorityList){
+    public User(String username, String password, List<SimpleGrantedAuthority> authorities){
        super();
        this.username = username;
-       this.authorities = authorityList;
+       this.authorities = authorities;
        this.password = password;
     }
 }
