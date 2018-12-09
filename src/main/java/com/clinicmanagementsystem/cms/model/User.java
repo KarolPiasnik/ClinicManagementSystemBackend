@@ -6,33 +6,21 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Document
-public class User extends Auditable {
+public class User extends Auditable implements UserDetails {
     @JsonSerialize(using = ToStringSerializer.class)
     @Id
     ObjectId id;
 
-    @NotNull
-    @NotBlank
-    private String name;
-
-    @NotNull
-    @NotBlank
-    private String surname;
-
     private  Person personalInfo;
 
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
+    private List<SimpleGrantedAuthority> authorities;
 
     public Boolean getActive() {
         return active;
@@ -45,30 +33,22 @@ public class User extends Auditable {
     private Boolean active;
 
     @NotBlank
-    private String pwd;
+    private String password;
 
     @NotBlank
     @Indexed(unique = true)
-    private String login;
+    private String username;
 
     @NotBlank
     @Indexed(unique = true)
     private String email;
 
-    public String getName() {
-        return name;
+    public ObjectId getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public Person getPersonalInfo() {
@@ -79,20 +59,40 @@ public class User extends Auditable {
         this.personalInfo = personalInfo;
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -101,5 +101,20 @@ public class User extends Auditable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<SimpleGrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(List<SimpleGrantedAuthority> authorities) {
+        this.authorities = authorities;
+    }
+
+    public User(String username, String password, List<SimpleGrantedAuthority> authorityList){
+       super();
+       this.username = username;
+       this.authorities = authorityList;
+       this.password = password;
     }
 }
