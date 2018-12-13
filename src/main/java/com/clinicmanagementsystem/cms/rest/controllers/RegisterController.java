@@ -5,6 +5,7 @@ import com.clinicmanagementsystem.cms.model.User;
 import com.clinicmanagementsystem.cms.rest.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataRetrievalFailureException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,6 +33,7 @@ public class RegisterController {
         if (user != null) {
             if (!user.getActive()) {
                 user.setActive(Boolean.TRUE);
+                user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
             }
         } else {
             throw new DataRetrievalFailureException("The account that you try to activate no longer exists");

@@ -1,10 +1,16 @@
 package com.clinicmanagementsystem.cms.model;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.Date;
 
 public class Appointment extends Auditable{
+
+    @Id
+    ObjectId id;
+
     Date date;
 
     @DBRef

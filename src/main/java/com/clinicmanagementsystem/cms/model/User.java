@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Document
@@ -73,22 +74,22 @@ public class User extends Auditable implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return active;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return active;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return active;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return active;
     }
 
     public void setUsername(String username) {
@@ -111,10 +112,4 @@ public class User extends Auditable implements UserDetails {
         this.authorities = authorities;
     }
 
-    public User(String username, String password, List<SimpleGrantedAuthority> authorities){
-       super();
-       this.username = username;
-       this.authorities = authorities;
-       this.password = password;
-    }
 }
