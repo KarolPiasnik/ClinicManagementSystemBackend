@@ -21,19 +21,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .disable()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/students/**").authenticated()
-                .antMatchers("/api/lessons/**").authenticated()
-                .antMatchers("/api/gradebooks/**").authenticated()
-                .antMatchers("/api/teachers/**").authenticated()
-                .antMatchers("/api/users/**").authenticated()
-                .antMatchers("/api/remarks/**").authenticated()
-                .antMatchers("/api/grades/**").authenticated()
-                .antMatchers("/api/announcements/**").authenticated()
-                .antMatchers("/api/subjects/**").authenticated()
-                .antMatchers("/api/questions/**").authenticated()
-                .antMatchers("/api/answers/**").authenticated()
-                .antMatchers("/oauth/token/**").permitAll()
+                .antMatchers("/appointment/**").authenticated()
+                .antMatchers("/worker/**").authenticated()
+                .antMatchers("/user/**").authenticated()
+                .antMatchers("/patient/**").authenticated()
+                .antMatchers("/doctor/**").authenticated()
+                .antMatchers("/register/**").permitAll()
                 .antMatchers("/**").authenticated();
-
     }
 }
