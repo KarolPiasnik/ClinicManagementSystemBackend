@@ -14,7 +14,7 @@ public class Appointment extends Auditable {
 
     Date date;
 
-    String Description;
+    String description;
 
     public ObjectId getId() {
         return id;
@@ -25,11 +25,11 @@ public class Appointment extends Auditable {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     @DBRef
