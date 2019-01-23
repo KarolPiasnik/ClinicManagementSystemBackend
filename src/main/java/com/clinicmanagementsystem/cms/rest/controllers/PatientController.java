@@ -1,13 +1,14 @@
 package com.clinicmanagementsystem.cms.rest.controllers;
 
 import com.clinicmanagementsystem.cms.model.Patient;
+import com.clinicmanagementsystem.cms.model.User;
 import com.clinicmanagementsystem.cms.rest.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -24,5 +25,12 @@ public class PatientController {
     @ResponseBody
     public List<Patient> getPatients() {
         return repository.findAllByType("patient");
+    }
+
+    @PostMapping("patient")
+    @ResponseBody
+    public Patient register(@Valid @RequestBody Patient patient) {
+        patient.setPassword(passwordEncoder.encode(patient.getPassword()));
+        return repository.save(patient);
     }
 }
