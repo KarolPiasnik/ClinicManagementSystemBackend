@@ -6,12 +6,30 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.Date;
 
-public class Appointment extends Auditable{
+public class Appointment extends Auditable {
 
     @Id
     ObjectId id;
 
     Date date;
+
+    String Description;
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
 
     @DBRef
     Doctor doctor;

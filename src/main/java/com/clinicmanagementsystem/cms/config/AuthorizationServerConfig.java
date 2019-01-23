@@ -24,6 +24,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     /**
      * Setting up the endpointsconfigurer authentication manager.
      * The AuthorizationServerEndpointsConfigurer defines the authorization and token endpoints and the token services.
+     *
      * @param endpoints
      * @throws Exception
      */
@@ -35,6 +36,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     /**
      * Setting up the clients with a clientId, a clientSecret, a scope, the grant types and the authorities.
+     *
      * @param clients
      * @throws Exception
      */
@@ -44,8 +46,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .inMemory()
                 .withClient("my-trusted-client")
                 .authorizedGrantTypes("client_credentials", "password")
-                .authorities("ROLE_CLIENT","ROLE_TRUSTED_CLIENT")
-                .scopes("read","write","trust")
+                .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
+                .scopes("read", "write", "trust")
                 .resourceIds("oauth2-resource")
                 .accessTokenValiditySeconds(5000)
                 .secret(passwordEncoder.encode("secret"));
@@ -54,6 +56,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     /**
      * We here defines the security constraints on the token endpoint.
      * We set it up to isAuthenticated, which returns true if the user is not anonymous
+     *
      * @param security the AuthorizationServerSecurityConfigurer.
      * @throws Exception
      */

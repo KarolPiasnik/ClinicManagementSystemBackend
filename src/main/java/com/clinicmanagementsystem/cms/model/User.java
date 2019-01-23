@@ -124,7 +124,6 @@ public class User extends Auditable implements UserDetails {
     private String pesel;
 
 
-
     public String getName() {
         return name;
     }

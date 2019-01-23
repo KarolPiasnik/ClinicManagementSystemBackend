@@ -1,15 +1,13 @@
 package com.clinicmanagementsystem.cms.rest.controllers;
 
 import com.clinicmanagementsystem.cms.model.Doctor;
-import com.clinicmanagementsystem.cms.model.User;
 import com.clinicmanagementsystem.cms.rest.repositories.DoctorRepository;
-import com.clinicmanagementsystem.cms.rest.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.util.List;
 
 

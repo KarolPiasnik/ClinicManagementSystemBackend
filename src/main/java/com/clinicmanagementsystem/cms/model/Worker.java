@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "user")
 @TypeAlias("worker")
 
-public class Worker extends User{
+public class Worker extends User {
 }
