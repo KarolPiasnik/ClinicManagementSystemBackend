@@ -1,4 +1,9 @@
 package com.clinicmanagementsystem.cms.model;
 
-public class Patient extends Person {
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "user")
+@TypeAlias("patient")
+public class Patient extends User {
 }

@@ -19,8 +19,6 @@ public class User extends Auditable implements UserDetails {
     @Id
     ObjectId id;
 
-    private  Person personalInfo;
-
     private List<SimpleGrantedAuthority> authorities;
 
     public Boolean getActive() {
@@ -44,20 +42,16 @@ public class User extends Auditable implements UserDetails {
     @Indexed(unique = true)
     private String email;
 
+    @NotNull
+    @NotBlank
+    private String type;
+
     public ObjectId getId() {
         return id;
     }
 
     public void setId(ObjectId id) {
         this.id = id;
-    }
-
-    public Person getPersonalInfo() {
-        return personalInfo;
-    }
-
-    public void setPersonalInfo(Person personalInfo) {
-        this.personalInfo = personalInfo;
     }
 
     public String getPassword() {
@@ -112,4 +106,58 @@ public class User extends Auditable implements UserDetails {
         this.authorities = authorities;
     }
 
+    @NotBlank
+    private String name;
+
+    @NotBlank
+    private String surname;
+
+    @NotBlank
+    private String pesel;
+
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPesel() {
+        return pesel;
+    }
+
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    private String emailAddress;
+
+    private String phoneNumber;
 }
