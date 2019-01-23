@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.Date;
+import java.util.Set;
 
 public class Appointment extends Auditable {
 
@@ -60,4 +61,15 @@ public class Appointment extends Auditable {
 
     @DBRef
     Patient patient;
+
+    public Set<Medication> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(Set<Medication> medications) {
+        this.medications = medications;
+    }
+
+    @DBRef
+    Set<Medication> medications;
 }
