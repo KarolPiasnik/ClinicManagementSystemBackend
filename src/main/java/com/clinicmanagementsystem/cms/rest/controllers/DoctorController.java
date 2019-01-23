@@ -22,9 +22,9 @@ public class DoctorController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping("doctor")
+    @GetMapping("doctor")
     @ResponseBody
-    public List<Doctor> getDoctors(@Valid @RequestBody User user) {
+    public List<Doctor> getDoctors() {
         return repository.findAllByType("doctor");
     }
 }

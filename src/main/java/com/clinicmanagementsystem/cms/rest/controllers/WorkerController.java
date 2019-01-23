@@ -7,10 +7,7 @@ import com.clinicmanagementsystem.cms.rest.repositories.DoctorRepository;
 import com.clinicmanagementsystem.cms.rest.repositories.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,9 +22,9 @@ public class WorkerController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping("worker")
+    @GetMapping("worker")
     @ResponseBody
-    public List<Worker> getWorkers(@Valid @RequestBody User user) {
+    public List<Worker> getWorkers() {
 
         return repository.findAllByType("doctor");
     }

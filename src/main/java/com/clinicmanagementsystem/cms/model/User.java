@@ -42,6 +42,14 @@ public class User extends Auditable implements UserDetails {
     @Indexed(unique = true)
     private String email;
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @NotNull
     @NotBlank
     private String type;
